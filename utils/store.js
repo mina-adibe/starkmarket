@@ -10,6 +10,7 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
+    //1- case of add item
     case "CART_ADD_ITEM": {
       const newItem = action.payload;
       // check it this item in already exist in out state
@@ -21,7 +22,11 @@ function reducer(state, action) {
         : [...state.cart.cartItems, newItem];
       return { ...state, cart: { ...state.cart, cartItems } };
     }
-
+    //2- case of remove item
+    case "CART_REMOVE_ITEM": {
+      const cartItems = state.cart.cartItems.filter((item) => item.slug !== action.payload.slug);
+      return { ...state, cart: { ...state.cart, cartItems } };
+    }
     default:
       return state;
   }

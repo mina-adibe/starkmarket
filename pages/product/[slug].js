@@ -8,6 +8,8 @@ import Layout from "../../components/Layout";
 import { Store } from "../../utils/store";
 
 const ProductScreen = () => {
+  const router = useRouter();
+
   const { state, dispatch } = useContext(Store);
 
   const {
@@ -31,6 +33,7 @@ const ProductScreen = () => {
     }
 
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
+    router.push("/cart");
   };
   return (
     <Layout title={product.name}>
