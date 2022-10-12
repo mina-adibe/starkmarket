@@ -10,8 +10,6 @@ import { Store } from "../../utils/store";
 import { FacebookShareButton, FacebookIcon } from "next-share";
 
 const ProductScreen = () => {
-  const CURRENT_PAGE_URL = window?.location?.href;
-
   const router = useRouter();
 
   const { state, dispatch } = useContext(Store);
@@ -46,7 +44,7 @@ const ProductScreen = () => {
       </div>
       <div>
         <FacebookShareButton
-          url={CURRENT_PAGE_URL}
+          url={`https://starkmarket.vercel.app/product/${slug}`}
           quote={"next-share is a social share buttons for your next React apps."}
           hashtag={"#nextshare"}>
           <FacebookIcon size={32} round />
