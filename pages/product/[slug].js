@@ -19,6 +19,7 @@ import {
   TelegramIcon,
   RedditIcon,
   WhatsappIcon,
+  LinkedinIcon,
 } from "next-share";
 
 const ProductScreen = () => {
