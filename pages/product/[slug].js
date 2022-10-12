@@ -7,7 +7,11 @@ import data from "../../utils/data";
 import Layout from "../../components/Layout";
 import { Store } from "../../utils/store";
 
+import { FacebookShareButton, FacebookIcon } from "next-share";
+
 const ProductScreen = () => {
+  const CURRENT_PAGE_URL = window?.location?.href;
+
   const router = useRouter();
 
   const { state, dispatch } = useContext(Store);
@@ -39,6 +43,14 @@ const ProductScreen = () => {
     <Layout title={product.name}>
       <div className="py-2">
         <Link href="/">back to products</Link>
+      </div>
+      <div>
+        <FacebookShareButton
+          url={CURRENT_PAGE_URL}
+          quote={"next-share is a social share buttons for your next React apps."}
+          hashtag={"#nextshare"}>
+          <FacebookIcon size={32} round />
+        </FacebookShareButton>
       </div>
       <div className="grid md:grid-cols-4 md:gap-3">
         <div className="md:col-span-2">
