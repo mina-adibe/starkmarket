@@ -121,11 +121,11 @@ const ProductScreen = (props) => {
       <Head>
         <title>My Product</title>
         <meta name="description" content="Super product with free shipping." key="desc" />
-        <script
+        {/* <script
           type="application/ld+json"
           dangerouslySetInnerHTML={addProductJsonLd()}
           key="product-jsonld"
-        />
+        /> */}
       </Head>
       <div className="py-2">
         <Link href="/">back to products</Link>
