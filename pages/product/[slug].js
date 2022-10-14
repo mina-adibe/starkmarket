@@ -101,7 +101,7 @@ const ProductScreen = () => {
     return <div>Product not found </div>;
   }
 
-  const addToCartFunction = () => {
+  const addToCartFunction = (props) => {
     const existItem = state.cart.cartItems.find((item) => item.slug === product.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
@@ -130,20 +130,20 @@ const ProductScreen = () => {
       </div>
       <div>
         <FacebookShareButton
-          url={currentUrl}
+          url={`${props.url}/${product.name}`}
           quote={"next-share is a social share buttons for your next React apps."}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
-        <TelegramShareButton url={currentUrl}>
+        <TelegramShareButton url={`${props.url}/${product.name}`}>
           <TelegramIcon size={25} round />
         </TelegramShareButton>
-        <RedditShareButton url={currentUrl}>
+        <RedditShareButton url={`${props.url}/${product.name}`}>
           <RedditIcon size={25} round />
         </RedditShareButton>
-        <WhatsappShareButton url={currentUrl}>
+        <WhatsappShareButton url={`${props.url}/${product.name}`}>
           <WhatsappIcon size={25} round />
         </WhatsappShareButton>
-        <LinkedinShareButton url={currentUrl}>
+        <LinkedinShareButton url={`${props.url}/${product.name}`}>
           <LinkedinIcon size={25} round />
         </LinkedinShareButton>
       </div>
@@ -195,6 +195,13 @@ const ProductScreen = () => {
       </div>
     </div>
   );
+};
+export const getServerSideProps = (context) => {
+  return {
+    props: {
+      url: context?.req?.headers?.host,
+    },
+  };
 };
 
 export default ProductScreen;
