@@ -131,20 +131,20 @@ const ProductScreen = (props) => {
       </div>
       <div>
         <FacebookShareButton
-          url={`${props.url}/${product.name}`}
+          url={`${props.url}/product/${product.name}`}
           quote={"next-share is a social share buttons for your next React apps."}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
-        <TelegramShareButton url={`${props.url}/${product.name}`}>
+        <TelegramShareButton url={`${props.url}/product/${product.name}`}>
           <TelegramIcon size={25} round />
         </TelegramShareButton>
-        <RedditShareButton url={`${props.url}/${product.name}`}>
+        <RedditShareButton url={`${props.url}/product/${product.name}`}>
           <RedditIcon size={25} round />
         </RedditShareButton>
-        <WhatsappShareButton url={`${props.url}/${product.name}`}>
+        <WhatsappShareButton url={`${props.url}/product/${product.name}`}>
           <WhatsappIcon size={25} round />
         </WhatsappShareButton>
-        <LinkedinShareButton url={`${props.url}/${product.name}`}>
+        <LinkedinShareButton url={`${props.url}/product/${product.name}`}>
           <LinkedinIcon size={25} round />
         </LinkedinShareButton>
       </div>
