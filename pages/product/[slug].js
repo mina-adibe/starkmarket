@@ -115,7 +115,7 @@ const ProductScreen = () => {
   };
 
   return (
-    <Layout title={product.name}>
+    <div>
       <Head>
         <title>My Product</title>
         <meta name="description" content="Super product with free shipping." key="desc" />
@@ -193,7 +193,7 @@ const ProductScreen = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 
