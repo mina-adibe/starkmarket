@@ -23,7 +23,8 @@ import {
 } from "next-share";
 import { NextSeo } from "next-seo";
 
-const ProductScreen = () => {
+const ProductScreen = (props) => {
+  console.log("props", props);
   function addProductJsonLd() {
     return {
       __html: `{
@@ -83,11 +84,11 @@ const ProductScreen = () => {
     query: { slug },
   } = useRouter();
 
-  const [currentUrl, setcurrentUrl] = useState("");
-  useEffect(() => {
-    const url = window.location.href;
-    setcurrentUrl(url);
-  }, []);
+  // const [currentUrl, setcurrentUrl] = useState("");
+  // useEffect(() => {
+  //   const url = window.location.href;
+  //   setcurrentUrl(url);
+  // }, []);
 
   const origin =
     typeof window !== "undefined" && window.location.origin ? window.location.origin : "";
@@ -101,7 +102,7 @@ const ProductScreen = () => {
     return <div>Product not found </div>;
   }
 
-  const addToCartFunction = (props) => {
+  const addToCartFunction = () => {
     const existItem = state.cart.cartItems.find((item) => item.slug === product.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
 
@@ -147,13 +148,13 @@ const ProductScreen = () => {
           <LinkedinIcon size={25} round />
         </LinkedinShareButton>
       </div>
-      <div>
+      {/* <div>
         <div>item details</div>
         <div>currentUrl: {currentUrl}</div>
         <div>asPath: {asPath}</div>
         <div>pathname: {pathname}</div>
         <div>URL-method2: {URL}</div>
-      </div>
+      </div> */}
 
       <div className="grid md:grid-cols-4 md:gap-3">
         <div className="md:col-span-2">
@@ -197,6 +198,7 @@ const ProductScreen = () => {
   );
 };
 export const getServerSideProps = (context) => {
+  console.log("context", context);
   return {
     props: {
       url: context?.req?.headers?.host,
