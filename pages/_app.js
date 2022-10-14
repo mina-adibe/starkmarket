@@ -5,7 +5,7 @@ import SEO from "../next-seo.config";
 function MyApp({ Component, pageProps }) {
   return (
     <StoreProvider>
-      <DefaultSeo {...SEO} />
+      {/* <DefaultSeo {...SEO} /> */}
       <Component {...pageProps} />
     </StoreProvider>
   );
