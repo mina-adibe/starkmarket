@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import data from "../../utils/data";
 import Layout from "../../components/Layout";
@@ -38,6 +38,11 @@ const ProductScreen = () => {
     const url = window.location.href;
     setcurrentUrl(url);
   }, []);
+
+  const origin =
+    typeof window !== "undefined" && window.location.origin ? window.location.origin : "";
+
+  const URL = `${origin}${asPath}`;
 
   // get the product
   const product = data.products.find((item) => item.slug === slug);
@@ -97,7 +102,6 @@ const ProductScreen = () => {
         </LinkedinShareButton>
       </div>
       <div>
-        <SocialMedia url={currentUrl} />
         <div>item details</div>
         <div>currentUrl: {currentUrl}</div>
         <div>asPath: {asPath}</div>
