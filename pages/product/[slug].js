@@ -28,8 +28,16 @@ const ProductScreen = () => {
   const { state, dispatch } = useContext(Store);
 
   const {
+    asPath,
+    pathname,
     query: { slug },
   } = useRouter();
+
+  const [currentUrl, setcurrentUrl] = useState("");
+  useEffect(() => {
+    const url = window.location.href;
+    setcurrentUrl(url);
+  }, []);
 
   // get the product
   const product = data.products.find((item) => item.slug === slug);
@@ -71,23 +79,32 @@ const ProductScreen = () => {
       </div>
       <div>
         <FacebookShareButton
-          url={`https://starkmarket.vercel.app/product/${slug}`}
+          url={currentUrl}
           quote={"next-share is a social share buttons for your next React apps."}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
-        <TelegramShareButton url={`https://starkmarket.vercel.app/product/${slug}`}>
+        <TelegramShareButton url={currentUrl}>
           <TelegramIcon size={25} round />
         </TelegramShareButton>
-        <RedditShareButton url={`https://starkmarket.vercel.app/product/${slug}`}>
+        <RedditShareButton url={currentUrl}>
           <RedditIcon size={25} round />
         </RedditShareButton>
-        <WhatsappShareButton url={`https://starkmarket.vercel.app/product/${slug}`}>
+        <WhatsappShareButton url={currentUrl}>
           <WhatsappIcon size={25} round />
         </WhatsappShareButton>
-        <LinkedinShareButton url={`https://starkmarket.vercel.app/product/${slug}`}>
+        <LinkedinShareButton url={currentUrl}>
           <LinkedinIcon size={25} round />
         </LinkedinShareButton>
       </div>
+      <div>
+        <SocialMedia url={currentUrl} />
+        <div>item details</div>
+        <div>currentUrl: {currentUrl}</div>
+        <div>asPath: {asPath}</div>
+        <div>pathname: {pathname}</div>
+        <div>URL-method2: {URL}</div>
+      </div>
+
       <div className="grid md:grid-cols-4 md:gap-3">
         <div className="md:col-span-2">
           <Image
