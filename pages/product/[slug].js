@@ -115,6 +115,7 @@ const ProductScreen = (props) => {
     router.push("/cart");
   };
 
+  console.log("product", product);
   return (
     <div>
       <Head>
@@ -131,20 +132,20 @@ const ProductScreen = (props) => {
       </div>
       <div>
         <FacebookShareButton
-          url={`${props.url}/product/${product.name}`}
+          url={`${props.url}/product/${product.slug}`}
           quote={"next-share is a social share buttons for your next React apps."}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
-        <TelegramShareButton url={`${props.url}/product/${product.name}`}>
+        <TelegramShareButton url={`${props.url}/product/${product.slug}`}>
           <TelegramIcon size={25} round />
         </TelegramShareButton>
-        <RedditShareButton url={`${props.url}/product/${product.name}`}>
+        <RedditShareButton url={`${props.url}/product/${product.slug}`}>
           <RedditIcon size={25} round />
         </RedditShareButton>
-        <WhatsappShareButton url={`${props.url}/product/${product.name}`}>
+        <WhatsappShareButton url={`${props.url}/product/${product.slug}`}>
           <WhatsappIcon size={25} round />
         </WhatsappShareButton>
-        <LinkedinShareButton url={`${props.url}/product/${product.name}`}>
+        <LinkedinShareButton url={`${props.url}/product/${product.slug}`}>
           <LinkedinIcon size={25} round />
         </LinkedinShareButton>
       </div>
